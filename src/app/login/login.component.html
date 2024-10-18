@@ -1,19 +1,39 @@
-<p>login works!</p>
-<div class="form-container">
-  <h2>Login</h2>
-  <form>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <!-- Username Field -->
+  <div>
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      [(ngModel)]="user.username"
+      #username="ngModel"
+      required
+      minlength="3"
+    />
+    <div *ngIf="username.invalid && username.touched">
+      <small *ngIf="username.errors?.['required']">Username is required.</small>
+      <small *ngIf="username.errors?.['minlength']">Username must be at least 3 characters long.</small>
     </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" required>
+  </div>
+
+  <!-- Password Field -->
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      required
+      minlength="6"
+    />
+    <div *ngIf="password.invalid && password.touched">
+      <small *ngIf="password.errors?.['required']">Password is required.</small>
+      <small *ngIf="password.errors?.['minlength']">Password must be at least 6 characters long.</small>
     </div>
-    <button type="submit">Login</button>
-    <div class="links">
-      <a routerLink="/forget-password">Forgot Password?</a>
-      <a routerLink="/signup">Sign Up</a>
-    </div>
-  </form>
-</div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>

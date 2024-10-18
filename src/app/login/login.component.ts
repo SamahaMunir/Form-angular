@@ -1,15 +1,25 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [
-    RouterLink
-  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [
+    FormsModule,
+    NgIf
+  ],
+  standalone: true
 })
 export class LoginComponent {
+  user = {
+    username: '',
+    password: ''
+  };
 
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log('Login form submitted', this.user);
+    }
+  }
 }

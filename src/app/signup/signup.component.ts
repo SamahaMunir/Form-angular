@@ -1,15 +1,27 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,
-  imports: [
-    RouterLink
-  ],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  imports: [
+    NgIf,
+    FormsModule
+  ],
+  standalone: true
 })
 export class SignupComponent {
+  user = {
+    name: '',
+    email: '',
+    password: ''
+  };
 
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log('Signup form submitted', this.user);
+    }
+  }
 }
+

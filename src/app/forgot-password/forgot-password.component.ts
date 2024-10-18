@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-forgot-password',
-  standalone: true,
-  imports: [
-    RouterLink
-  ],
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.css'
+  imports: [
+    FormsModule,
+    NgIf
+  ],
+  standalone: true
 })
 export class ForgotPasswordComponent {
+  user = {
+    email: ''
+  };
 
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log('Forget Password form submitted', this.user);
+    }
+  }
 }
