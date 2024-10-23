@@ -11,10 +11,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   standalone: true
 })
 export class UserDetailComponent {
-  @Input() user: { name: string; email: string } | null = null;
-  @Output() userRemoved = new EventEmitter<void>();
+  @Input() user: { name: string; email: string } | null = null;  // Receive individual user
+  @Output() userRemoved = new EventEmitter<void>();  // Emit event when user is removed
 
-  // Emit the userRemoved event to notify the parent
+  // Emit event when "Remove" button is clicked
   removeUser() {
     this.userRemoved.emit();
   }
