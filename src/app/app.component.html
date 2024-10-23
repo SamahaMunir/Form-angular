@@ -5,9 +5,10 @@
     <li><a routerLink="/forget-password">Forget Password</a></li>
   </ul>
 </nav>
+
 <app-header></app-header>
 
-<!-- Main content will be rendered here -->
+<!-- User Form to Add New Users -->
 <h2>Add New User</h2>
 <form (ngSubmit)="addUser()">
   <label for="name">Name:</label>
@@ -19,8 +20,8 @@
   <button type="submit">Add User</button>
 </form>
 
-<!-- Passing the users array to the UserList component -->
-<app-user-list [users]="users"></app-user-list>
+<!-- Passing the users array to the UserList component and handling user removal -->
+<app-user-list [users]="users" (userRemovedAt)="removeUser($event)"></app-user-list>
 
 <router-outlet></router-outlet>
 

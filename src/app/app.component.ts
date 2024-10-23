@@ -15,7 +15,7 @@ import { UserListComponent } from './user-list.component';
     HeaderComponent,
     FooterComponent,
     UserListComponent,
-    FormsModule
+    FormsModule,
   ],
 })
 export class AppComponent {
@@ -33,5 +33,10 @@ export class AppComponent {
       this.users.push({ ...this.newUser });
       this.newUser = { name: '', email: '' }; // Reset the form
     }
+  }
+
+  // Method to remove user from the list
+  removeUser(index: number) {
+    this.users.splice(index, 1);
   }
 }
