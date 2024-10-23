@@ -8,8 +8,20 @@
 <app-header></app-header>
 
 <!-- Main content will be rendered here -->
+<h2>Add New User</h2>
+<form (ngSubmit)="addUser()">
+  <label for="name">Name:</label>
+  <input id="name" [(ngModel)]="newUser.name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input id="email" [(ngModel)]="newUser.email" name="email" required>
+
+  <button type="submit">Add User</button>
+</form>
+
+<!-- Passing the users array to the UserList component -->
+<app-user-list [users]="users"></app-user-list>
+
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>
-
-<router-outlet></router-outlet>

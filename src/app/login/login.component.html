@@ -2,15 +2,7 @@
   <!-- Username Field -->
   <div>
     <label for="username">Username:</label>
-    <input
-      type="text"
-      id="username"
-      name="username"
-      [(ngModel)]="user.username"
-      #username="ngModel"
-      required
-      minlength="3"
-    />
+    <input type="text" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" required minlength="3"/>
     <div *ngIf="username.invalid && username.touched">
       <small *ngIf="username.errors?.['required']">Username is required.</small>
       <small *ngIf="username.errors?.['minlength']">Username must be at least 3 characters long.</small>
